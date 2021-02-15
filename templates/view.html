@@ -1,0 +1,23 @@
+{% extends 'home.html' %}
+
+{% block title %}View{% endblock %}
+
+{% block content %}
+
+<center>
+    <br>
+    <br>
+    <br>
+    <div class="card text-white bg-dark mb-3" style="max-width: 18rem;">
+        <div class="card-header">Contact Info</div>
+        <div class="card-body">
+            <h5 class="card-title">{{contact.name}}</h5>
+            <p class="card-text">Phone: {{contact.phone_number}}</p>
+            <h6>date: {{today}}</h6>
+        </div>
+    </div>
+    <a href="{{url_for('contact_book')}}" class="btn btn-secondary"  type="button"
+        role="button">Back</a>
+</center>
+
+{% endblock %}

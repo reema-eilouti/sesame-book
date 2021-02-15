@@ -1,0 +1,62 @@
+{% extends 'home.html' %}
+
+
+
+
+{% block content %}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul class=flashes>
+    {% for message in messages %}
+    <center>
+        <strong>{{ message }} </strong>
+    </center>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+<center>
+    <div class="alert alert-dark" role="alert">
+        <h3> Hello {{user | title}}, here are your friends contact information!</h3>
+    </div>
+    <br>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone number</th>
+                <th>options</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in dictionary.contact%}
+            <tr>
+                <th scope="row">{{loop.index }}</th>
+                <td>{{row.name}}</td>
+                <td>{{row.phone_number}}</td>
+                <td><a href="/view/{{loop.index}}" class="btn btn-secondary" type="submit" role="button"><i
+                            class="far fa-eye"></i></a>
+                    <a href="/delete/{{loop.index}}" class="btn btn-secondary" type="submit" role="button"><i
+                            class="fas fa-trash"></i></a>
+                    <a href="/edit/{{loop.index}}" class="btn btn-secondary" type="submit" role="button"><i
+                            class="fas fa-user-edit"></i></a>
+                </td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+
+        <tbody>
+
+
+    </table>
+    <br>
+    <a href="{{url_for('add')}}" class="btn btn-secondary" target="_blank" type="button" role="button">Add-Contact</a>
+
+
+
+
+</center>
+{% endblock %}

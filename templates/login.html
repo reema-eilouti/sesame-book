@@ -1,0 +1,47 @@
+{% extends 'home.html' %}
+{% block title %} LogIn {% endblock %}
+
+
+{% block content %}
+
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<center>
+    <strong>{{ message }} </strong>
+</center>
+{% endfor %}
+{% endif %}
+{% endwith %}
+
+<center>
+
+    <div class="alert alert-dark" role="alert">
+
+        <h2>Login</h2>
+        <br>
+        <h5> You have to log in to see your profile and contact book </h5>
+    </div>
+    <div class="container mt-4">
+
+        <form method="POST" action="/login" class="form-group">
+            <input type="hidden" name="next_url" value="{{request.args.get('next' , '')}}">
+
+
+            <p> User name </p>
+            <p> <input type="text" name="username" required>
+                <hr>
+            <p> Password </p>
+            <p> <input type="password" name="password" required>
+
+            <p> <input class="btn btn-secondary" type="submit" value="Login">
+                <input class="btn btn-secondary" type="reset" value="Clear">
+
+        </form>
+
+
+    </div>
+
+</center>
+
+{% endblock %}
